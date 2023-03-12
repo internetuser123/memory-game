@@ -1,15 +1,15 @@
 const Card = (props) => {
 
-    const {card, handleChoice} = props;
+    const {card, handleChoice, flipped} = props;
 
     const handleClick = () => {
         handleChoice(card)
     }
       
       return (
-        <div>
-          <div>
-            <img className='images' /* key={item.id} */ src={card.src} alt="" />
+        <div className="card">
+          <div className={flipped ? "flipped" : ""}>
+            <img className='front' /* key={item.id} */ src={card.src} alt="" />
             <div
              onClick={handleClick}
              className="background">

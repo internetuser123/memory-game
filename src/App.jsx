@@ -9,9 +9,9 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null)
 
   const pics = [
-    {'src': 'images/drum.jpg'},
-    {'src': 'images/duck.jpg'},
-    {'src': 'images/soccerball.jpg'},
+    {'src': 'images/drum.jpg', matched: false},
+    {'src': 'images/duck.jpg', matched: false},
+    {'src': 'images/soccerball.jpg', matched: false},
   ]
 
   const createCards = () => {
@@ -31,13 +31,23 @@ function App() {
     if ( choiceOne && choiceTwo) {
       if (choiceOne.src === choiceTwo.src) {
         console.log("those cards match")
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === choiceOne.src) {
+              return {...card, matched: true}
+            } else {
+              return card;
+            }
+          })
+        })
         resetTurn()
       } else {
-        console.log("cards do not match")
-        resetTurn()
+        setTimeout(() => resetTurn(), 1000)
       }
     }
   }, [choiceOne, choiceTwo])
+
+  console.log(cards)
 
   const resetTurn = () => {
     setChoiceOne(null)
@@ -52,7 +62,8 @@ function App() {
           return <Card
             key={card.id}
             card={card}
-            handleChoice={handleCardChoice} />
+            handleChoice={handleCardChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched} />
         })}
       </div>
       

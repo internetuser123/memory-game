@@ -9,11 +9,29 @@
   margin: 1rem;
 }
 
-.images {
+.card {
+  position: relative
+}
+
+.front {
   width: 150px;
   height: 150px;
   border-radius: 1rem;
   /* display: none; */
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card .front {
+  transform: rotateY(90deg);
+  position: absolute;
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
 }
 
 .container {
@@ -32,6 +50,3 @@
   background-color: white
 }
 
-.is-active {
-  display: block;
-}
