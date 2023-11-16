@@ -8,7 +8,7 @@ interface CardType {
     id?: number;
 }
 
-function App() {
+function App(): JSX.Element {
     const [cards, setCards] = useState<CardType[]>([]);
     const [choiceOne, setChoiceOne] = useState<CardType | null>(null);
     const [choiceTwo, setChoiceTwo] = useState<CardType | null>(null);

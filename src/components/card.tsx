@@ -7,7 +7,7 @@ interface CardProps {
     handleChoice: (card: { src: string; matched: boolean; id?: number }) => void;
     flipped: boolean;
 }
-const Card = (props: CardProps) => {
+const Card: React.FC<CardProps> = (props: CardProps) => {
     const { card, handleChoice, flipped } = props;
 
     const handleClick = () => {
